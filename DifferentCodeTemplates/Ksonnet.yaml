@@ -1,0 +1,27 @@
+apiVersion: ksonnet.io/v1
+kind: Component
+metadata:
+  name: my-deployment
+spec:
+  type: deployment
+  description: My deployment component
+  properties:
+    apiVersion: apps/v1
+    kind: Deployment
+    metadata:
+      name: my-deployment
+    spec:
+      selector:
+        matchLabels:
+          app: my-app
+      replicas: 3
+      template:
+        metadata:
+          labels:
+            app: my-app
+        spec:
+          containers:
+          - name: my-container
+            image: my-image:1.0.0
+            ports:
+            - containerPort: 80
